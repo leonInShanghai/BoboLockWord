@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<translate-->
+    <!--android:fromXDelta="100%"-->
+    <!--android:rotate=-->
+    <!--android:toXDelta="0%"-->
+    <!--android:fromYDelta="0%"-->
+    <!--android:toYDelta="0%"-->
+    <!--android:duration="5000"/>-->
+
+    <!--android:interpolator  设定插值器，其实就是指定的动作效果，比如弹跳效果等，
+    @android:anim/accelerate_decelerate_interpolator-->
+    <!--android:pivotX               缩放起点X轴坐标，可以是数值、百分数、百分数p 三种样式，比如 50、50%、50%p，-->
+    <!--android:pivotY               缩放起点Y轴坐标，可以是数值、百分数、百分数p 三种样式，比如 50、50%、50%p-->
+    <!--android:fillAfter          如果设置为true，控件动画结束时，将保持动画最后时的状态-->
+    <!--android:fillBefore       如果设置为true,控件动画结束时，还原到开始动画前的状态-->
+    <!--android:fillEnabled     与android:fillBefore 效果相同，都是在动画结束时，将控件还原到初始化状态-->
+    <!--android:repeatCount  重复次数-->
+    <!--android:repeatMode 重复类型，有reverse和restart两个值，reverse表示倒序回放，-->
+    <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="3000"
+        android:fromDegrees="0"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toDegrees="-360" />
+</set>

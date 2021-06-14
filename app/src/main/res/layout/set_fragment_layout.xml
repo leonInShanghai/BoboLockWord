@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- android:background="@android:color/white" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="开启单词锁屏"
+            android:textColor="#ffffff"
+            android:textSize="17sp"/>
+
+        <!-- android:layout_height="28dp"
+         android:layout_marginRight="15dp" -->
+        <com.bobo.bobolockword.SwitchButton
+            android:id="@+id/switch_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <!-- android:background="@android:color/white" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:padding="10dp"
+            android:text="开锁单词难度"
+            android:textColor="#ffffff"
+            android:textSize="17sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_difficulty"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:popupBackground="#CC000000"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <!-- android:background="@android:color/white" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:padding="10dp"
+            android:text="需要解锁题的个数"
+            android:textColor="#ffffff"
+            android:textSize="17sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_all_number"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:popupBackground="#CC000000"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <!-- android:background="@android:color/white" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:padding="10dp"
+            android:text="每日新题的个数"
+            android:textColor="#ffffff"
+            android:textSize="17sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_new_number"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:popupBackground="#CC000000"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <!-- android:background="@android:color/white" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:padding="10dp"
+            android:text="每日复习题的个数"
+            android:textColor="#ffffff"
+            android:textSize="17sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_revise_number"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:popupBackground="#CC000000"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+</LinearLayout>

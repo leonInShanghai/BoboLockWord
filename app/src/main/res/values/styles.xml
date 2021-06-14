@@ -1,0 +1,39 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- <item name="android:windowFullscreen">true</item> -->
+    </style>
+
+    <!-- 自定义启动图 -->
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- 设置系统的取消预览(空白窗口)为true -->
+        <item name="android:windowDisablePreview">true</item>
+        <!-- 设置背景为透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+
+        <!-- 设置全局背景 -->
+        <item name="android:windowBackground">@mipmap/background</item>
+    </style>
+
+    <!-- LEAlertDialog用到的主题 -->
+    <style parent="@android:style/Theme.Dialog" name="le_dialog">
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>

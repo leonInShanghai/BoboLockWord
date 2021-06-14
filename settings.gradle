@@ -1,0 +1,3 @@
+include ':greendao'
+include ':app'
+rootProject.name = "BoboLockWord"

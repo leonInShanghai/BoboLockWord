@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 沉浸式状态栏占位View -->
+    <ImageView
+        android:id="@+id/status_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/header"/>
+
+    <!-- 顶部标题栏
+     android:background="@android:color/holo_blue_light" -->
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_below="@+id/status_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="锁屏背单词"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/wrong_btn"
+            android:layout_width="56dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:padding="3dp"
+            android:text="使用技巧"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            android:background="@drawable/btn_backg"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_below="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- 用于切换设置和复习页面Fragment的两个按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <!-- [rɪˈvaɪz]:revise：复习 -->
+        <!-- android:background="@android:color/holo_blue_light" -->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="1.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_backg"
+            android:onClick="clickRevise"
+            android:text="复习"
+            android:textColor="@android:color/white"/>
+
+        <!-- android:background="@android:color/holo_blue_light" -->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1.5dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_backg"
+            android:onClick="clickSet"
+            android:text="设置"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
