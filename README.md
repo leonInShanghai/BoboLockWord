@@ -27,6 +27,6 @@
 ##### 下载二维码请使用安卓手机浏览器扫描下载体验
 <br/>
 <div align="center">
-<img src="https://github.com/leonInShanghai/BoboRestaurant/blob/master/photo/download_qr_code.png?raw=true" alt="下载二维码"/>
-<img src="https://github.com/leonInShanghai/BoboRestaurant/blob/master/photo/download%20_schematic.png?raw=true" alt="下载操作示例图"/>
+<img src="https://github.com/leonInShanghai/BoboLockWord/blob/master/picture/qrcode.png?raw=true" alt="下载二维码"/>
+<img src="https://github.com/leonInShanghai/BoboLockWord/blob/master/picture/download%20_schematic.png?raw=true" alt="下载操作示例图"/>
 </div>
