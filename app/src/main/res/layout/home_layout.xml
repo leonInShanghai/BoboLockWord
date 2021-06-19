@@ -40,7 +40,8 @@
             android:text="使用技巧"
             android:textColor="@android:color/white"
             android:textSize="10sp"
-            android:background="@drawable/btn_backg"/>
+            android:background="@drawable/btn_backg"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 

@@ -3,8 +3,10 @@ package com.bobo.bobolockword;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -95,6 +98,9 @@ public class MainActivity extends Activity implements View.OnClickListener,
     private CET4EntityDao questionDao;
     private CET4EntityDao dbDao;
 
+    // 监听用户按下home键的广播
+    private InnerRecevier innerReceiver;
+
     private static final int DELAYED = 600;
 
     @SuppressLint("HandlerLeak")
@@ -104,7 +110,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == DELAYED) {
-                // FIXME: 新增加
+                // FIXME: 新增加 不要立马关掉有那种突兀的感觉
                 unlocked();
             }
         }
@@ -204,6 +210,13 @@ public class MainActivity extends Activity implements View.OnClickListener,
 
         // 获取数据
         getDBData(datas);
+
+        // 创建监听home键的广播
+        innerReceiver = new InnerRecevier();
+        // 动态注册广播
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        // 注册广播（记得要解除注册）
+        registerReceiver(innerReceiver, intentFilter);
     }
 
     /**
@@ -518,7 +531,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
                 // editor.putInt(Common.ALREADY_MASTERED, num);
                 // editor.commit();
                 // Toast.makeText(this, "已掌握", Toast.LENGTH_SHORT).show();
-                getNextData();
+                // getNextData();
                 // FIXME: 新增加
                 unlocked();
             } else if (y2 - y1 > 200) {
@@ -527,7 +540,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
                 unlocked();
             } else if (x1 - x2 > 200) {
                 // 向左划 获取下一条数据
-                getNextData();
+                // getNextData();
                 // FIXME: 新增加
                 unlocked();
             } else if (x2 - x1 > 200) {
@@ -545,12 +558,47 @@ public class MainActivity extends Activity implements View.OnClickListener,
         unlocked();
     }
 
+    /**
+     * 监听home键
+     */
+    class InnerRecevier extends BroadcastReceiver {
+
+        final String SYSTEM_DIALOG_REASON_KEY = "reason";
+
+        final String SYSTEM_DIALOG_REASON_RECENT_APPS = "recentapps";
+
+        final String SYSTEM_DIALOG_REASON_HOME_KEY = "homekey";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(action)) {
+                String reason = intent.getStringExtra(SYSTEM_DIALOG_REASON_KEY);
+                if (reason != null) {
+                    if (reason.equals(SYSTEM_DIALOG_REASON_HOME_KEY)) {
+                        // 用户按下了home键
+                        unlocked();
+                        // Toast.makeText(MainActivity.this, " finish", Toast.LENGTH_SHORT).show();
+                        // MainActivity.this.finish();
+                    } else if (reason.equals(SYSTEM_DIALOG_REASON_RECENT_APPS)) {
+                        // unlocked();
+                        // MainActivity.this.finish();
+                        // Toast.makeText(MainActivity.this, "多任务键被监听", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     protected void onDestroy() {
         if (mHandler != null){
             mHandler.removeMessages(DELAYED);
             mHandler.removeCallbacksAndMessages(null);
             mHandler = null;
+        }
+        if (innerReceiver != null) {
+            unregisterReceiver(innerReceiver);
         }
         super.onDestroy();
     }

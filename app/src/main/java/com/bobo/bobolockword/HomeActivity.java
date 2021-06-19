@@ -96,15 +96,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
              */
             @Override
             public void onScreenOn() {
-                Log.d("HomeActivity", "onScreenOn");
+                Log.d("HomeActivity", "onScreenOn 手机点亮屏幕回调");
                 // 判断是否在锁屏页面开启了锁屏按钮
                 if (sharedPreferences.getBoolean(Common.BTN_TF_KEY, false)) {
-                    // 判断屏幕是否解锁
-                    if (sharedPreferences.getBoolean(Common.TF_KEY, false)) {
+
+                    if (!ActivityForeground.isForeground(HomeActivity.this)) {
+                        // 判断屏幕是否解锁
+                        // if (sharedPreferences.getBoolean(Common.TF_KEY, false)) {
+                        Log.d("HomeActivity", "onScreenOn 显示背单词");
                         // 启动并跳转到锁屏页
-//                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                        HomeActivity.this.startActivity(intent);
+                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        HomeActivity.this.startActivity(intent);
+                        // }
                     }
                 }
             }
@@ -114,11 +118,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
              */
             @Override
             public void onScreenOff() {
-                Log.d("HomeActivity", "onScreenOff");
+                Log.d("HomeActivity", "onScreenOff 手机已锁屏回调");
                 // 如果手机已经锁屏了就把tf改成true
-                // editor.putBoolean(Common.TF_KEY, true);
-                // editor.commit();
+                editor.putBoolean(Common.TF_KEY, false);
+                editor.commit();
                 BaseApplication.destoryActivity(Common.MAIN_ACTIVITY);
+//                // 启动并跳转到锁屏页
+//                if (sharedPreferences.getBoolean(Common.BTN_TF_KEY, false)) {
+//                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                    HomeActivity.this.startActivity(intent);
+//                }
             }
 
             /**
@@ -126,23 +136,38 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
              */
             @Override
             public void onUserPresent() {
-                Log.d("HomeActivity", "onUserPresent***************8");
+                Log.d("HomeActivity", "onUserPresent手机已经解锁的回调");
                 // 如果手机已经解锁了就把tf改成false
-                // editor.putBoolean(Common.TF_KEY, false);
-                // editor.commit();
-
-                // 启动并跳转到锁屏页
-                if (sharedPreferences.getBoolean(Common.BTN_TF_KEY, false)) {
-                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    HomeActivity.this.startActivity(intent);
-                }
+                editor.putBoolean(Common.TF_KEY, true);
+                editor.commit();
+                BaseApplication.destoryActivity(Common.MAIN_ACTIVITY);
             }
         });
 
         // 当此页面加载的时候先显示复习界面Fragmnet
         studyFragment = new StudyFragment();
         setShowFragment(studyFragment);
+    }
+
+
+
+    /**
+     * 用户按下返回键
+     * @return
+     */
+    @Override
+    public void onBackPressed() {
+        try {
+            // 像腾讯QQ微信那样直接显示app的内容页，不先显示Splash → 登录 → 再显示内容页
+            Intent home = new Intent(Intent.ACTION_MAIN);
+            home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            home.addCategory(Intent.CATEGORY_HOME);
+            startActivity(home);
+            return;
+        } catch (Exception e) {
+            // ignore ：代码会自动往下执行的
+        }
+        super.onBackPressed();
     }
 
     /**
