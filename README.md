@@ -8,7 +8,7 @@
     * 四大组件的基本使用
     * 沉浸式状态栏
 
-* <a href="https://mp.weixin.qq.com/s?__biz=MzIzNjU5NDk1MQ==&mid=2247483751&idx=1&sn=c41cdd65a1b521cfe5a342bfc8776791&chksm=e8d4330fdfa3ba196e4f1227a8e106ca3269215cf05ba92bf8bbf171b6571628cc443c26f6a1&token=1185001004&lang=zh_CN#rd">国内</a>
+* <a href="https://mp.weixin.qq.com/s?__biz=MzIzNjU5NDk1MQ==&mid=2247483769&idx=1&sn=b6597ebac9d71870e7ea30fdae2498c1&chksm=e8d43311dfa3ba07bc50e184092784acfb19a980cd982096c679753d1fddda51498a4c620a1b&token=1356583734&lang=zh_CN#rd">国内</a>
 
 * 示例图：
 
